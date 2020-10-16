@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>session 1</h1>
+  </body>
+  <script>
+    // javascript primitives ( basic data types )
+
+    // value assignment
+    // =
+    // var a = 10
+    // console.log(a) (says 10)
+
+    // value comparison
+    // ===
+    // a === 8 (false)
+
+    // will never be true, so will never happen
+    if (5 === 6) {
+      alert("why does 5 equal 6?????!");
+    }
+
+    // number
+    const integer = 123;
+    const decimal = 123.456;
+    const random = Math.random();
+    const roundedDown = Math.floor(decimal);
+    const roundedUp = Math.ceil(decimal);
+    const rounded = Math.round(decimal);
+    console.log("numbers", {
+      integer: integer,
+      decimal: decimal,
+      random: random,
+      roundedDown: roundedDown,
+      roundedUp: roundedUp,
+      rounded: rounded,
+    });
+    // functions inside objects are called method
+    // eg. Math.floor - the "floor" is a method inside Math
+
+    // string
+    const str = "hello how are you?";
+    const shorterStr = str.substr(0, 5);
+    const strLiteral = `you can put variables inside like ${random}`;
+
+    console.log("strings", { str, shorterStr, strLiteral });
+    // boolean
+    const bool = true;
+    const oppositeOfBool = !bool;
+    const user = {
+      email: "",
+    };
+    const userHasEmail = !!user.email;
+    console.log("booleans", { bool, oppositeOfBool, userHasEmail });
+
+    // array
+    const users = ["ben", "liv", "aria"];
+    const user1 = users[0];
+    const lastUser = users[users.length - 1];
+    users.push("yazzen");
+    const randomUser = users[Math.round(Math.random() * (users.length - 1))];
+
+    console.log("arrays", { users, user1, lastUser, randomUser });
+
+    // loops
+    const products = [];
+
+    for (var i = 0; i < 100; i++) {
+      products[i] = {
+        id: i,
+        price: Math.random() * 1000 + 500,
+        productName: `iphone${i + 1}`,
+        wasPopular: i % 2 === 0,
+        weRecommendThis: i % 3 === 0,
+      };
+    }
+
+    // foreach
+    // map
+    const productNames = products.map((product) => product.productName);
+    // filter
+
+    const cheaperProducts = products.filter((product) => {
+      return product.price < 700;
+    });
+    const productsThatWeRecommend = products.filter((product) => {
+      return product.weRecommendThis;
+    });
+
+    console.log("numbers", {
+      products,
+      productNames,
+      cheaperProducts,
+      productsThatWeRecommend,
+    });
+    // objects
+    // class
+    // indenting
+    // null
+    // undefined
+  </script>
+</html>
