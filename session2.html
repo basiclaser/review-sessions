@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="list"></ul>
+  </body>
+  <script>
+    const list = document.querySelector("#list");
+
+    function randomDate(start, end) {
+      return new Date(
+        start.getTime() + Math.random() * (end.getTime() - start.getTime())
+      );
+    }
+    // mapping
+    const users = [];
+    const NUM_USERS = 20;
+    const programmingLanguages = [
+      "c",
+      "c#",
+      "java",
+      "c++",
+      "python",
+      "erlang",
+      "COBOL",
+    ];
+    for (var i = 0; i < NUM_USERS; i++) {
+      const _user = {
+        name: "user" + i,
+        id: Math.round(Math.random() * 1000000),
+        programmingLanguage:
+          programmingLanguages[
+            Math.floor(Math.random() * programmingLanguages.length)
+          ],
+        dateJoined: randomDate(new Date(2012, 0, 1), new Date()),
+      };
+      users.push(_user);
+    }
+
+    const listItems = users.map((user) => {
+      return `<li>${user.name} - ${user.programmingLanguage}</li>`;
+    });
+    console.log(users);
+  </script>
+</html>
