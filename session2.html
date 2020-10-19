@@ -6,10 +6,12 @@
     <title>Document</title>
   </head>
   <body>
+    <select id="dropdown"></select>
     <ul id="list"></ul>
   </body>
   <script>
     const list = document.querySelector("#list");
+    const dropdown = document.querySelector("#dropdown");
 
     function randomDate(start, end) {
       return new Date(
@@ -28,6 +30,16 @@
       "erlang",
       "COBOL",
     ];
+    const dropdownOptions = programmingLanguages.map(
+      (language) => `<option value="${language}">${language}</option>`
+    );
+    dropdown.innerHTML = dropdownOptions;
+
+    dropdown.addEventListener("change", function () {
+      var selectedString = dropdown.options[dropdown.selectedIndex].value;
+      renderList(selectedString);
+    });
+
     for (var i = 0; i < NUM_USERS; i++) {
       const _user = {
         name: "user" + i,
@@ -41,9 +53,23 @@
       users.push(_user);
     }
 
-    const listItems = users.map((user) => {
-      return `<li>${user.name} - ${user.programmingLanguage}</li>`;
-    });
+    function renderList(selectedLanguage) {
+      console.log({ dropdown });
+      const listItems = users
+        .filter((user) =>
+          selectedLanguage
+            ? user.programmingLanguage === selectedLanguage
+            : true
+        )
+        .map((user) => {
+          return `<li>${user.name} - ${user.programmingLanguage}</li>`;
+        })
+        .join("");
+
+      list.innerHTML = listItems;
+    }
+    renderList();
+
     console.log(users);
   </script>
 </html>
